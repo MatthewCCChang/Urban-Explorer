@@ -76,7 +76,7 @@ const ButtonRowWithCards = () => {
 
   return (
     <View style={styles.container}>
-    <Text style={local}>Local</Text>
+    <Text style={local}>Newcomer</Text>
     <View style={styles.exploreCity}>
       <Text style={explore}>Explore</Text>
       <Text style={irvine}>Irvine</Text>

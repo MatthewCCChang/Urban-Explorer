@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import Nav from './Nav';
 
 const CardDetailsScreen = ({ route }) => {
   const { cardTitle } = route.params;
@@ -8,6 +9,7 @@ const CardDetailsScreen = ({ route }) => {
     <View style={styles.container}>
       <Text>{cardTitle} Details Screen</Text>
       {/* Add more details about the card here */}
+      <Nav/>
     </View>
   );
 };
