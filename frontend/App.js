@@ -7,7 +7,9 @@ import City from "./City";
 import Explore from "./Explore";
 import CardDetailsScreen from "./CardDetailsScreen";
 import Ranking from "./Ranking";
-import Signup from "./Signup"
+import Signup from "./Signup";
+import Milestones from "./Milestones";
+import Accept from "./Accept"
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +29,8 @@ export default function App() {
         <Stack.Screen name="Explore" component={Explore} />
         <Stack.Screen name="CardDetails" component={CardDetailsScreen} />
         <Stack.Screen name="Ranking" component={Ranking} />
+        <Stack.Screen name="Milestones" component={Milestones} />
+        <Stack.Screen name="Accept" component={Accept} />
         
       </Stack.Navigator>
     </NavigationContainer>

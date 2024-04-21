@@ -7,6 +7,7 @@ import {
   Text,
   ScrollView,
   TouchableHighlight,
+  TouchableOpacity,
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
@@ -20,6 +21,10 @@ export default function CardDetailsScreen({ route, navigation }) {
   const [location, setLocation] = useState("Irvine, 1924");
   const [phone, setPhone] = useState("949 246 6367");
   const [menuURL, setMenuURL] = useState("");
+
+  const onPressExplore = () => {
+    navigation.navigate("Accept");
+  };
 
   const openURL = (url) => {
     Linking.canOpenURL(url).then((supported) => {
@@ -77,6 +82,9 @@ export default function CardDetailsScreen({ route, navigation }) {
         <Image source={{ uri: imageURL }} style={styles.image} />
         
       </ScrollView>
+      <TouchableOpacity onPress={onPressExplore} style={styles.loginBtn}>
+            <Text style={styles.loginText}>Let's Go! </Text>
+        </TouchableOpacity>
     </View>
   );
 }
@@ -135,5 +143,26 @@ const styles = StyleSheet.create({
     fontFamily: "Menlo",
     fontSize: 20,
     marginRight: 10,
+  },
+  loginBtn: {
+    width: "50%",
+    backgroundColor: "#176ff2",
+    borderRadius: 25,
+    height: 50,
+    margin: 110,
+    marginBottom: 200,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 32,
+    shadowColor: "#5e96eb",
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowRadius: 22,
+    shadowOpacity: 1,
+  },
+  loginText: {
+    color: "white",
   },
 });

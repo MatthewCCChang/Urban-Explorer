@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
   },
   inputText: {
     height: 50,
-    color: "white",
+    color: "#176ff2",
   },
   forgotAndSignUpText: {
     color: "#FFFFFF",

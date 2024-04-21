@@ -113,10 +113,10 @@ const ButtonRowWithCards = () => {
     color: "#000000",
   };
 
-  const Card = ({ id, text }) => {
+  const Card = ({ id, cardTitle }) => {
     return (
       <>
-        <TouchableOpacity onPress={() => handleCardPress(text)}>
+        <TouchableOpacity onPress={() => handleCardPress(cardTitle)}>
         {selectedButton === "viewpoints" &&
           <View style={styles.card}>
             <Image
