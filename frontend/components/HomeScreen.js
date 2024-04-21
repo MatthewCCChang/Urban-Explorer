@@ -93,7 +93,6 @@ export default class HomeScreen extends Component {
             {renderPhotoViews(activities)}
           </ScrollView>
         </ScrollView>
-        
       </View>
     );
   }
@@ -102,9 +101,8 @@ const styles = StyleSheet.create({
   centerAlignedContainer: {
     alignItems: "center",
   },
-  
 
-  verticalScroll: { 
+  verticalScroll: {
     flexGrow: 1,
   },
   container: {
@@ -122,21 +120,25 @@ const styles = StyleSheet.create({
     borderRadius: 10, // Keep or remove based on design preference
   },
   title: {
+    
+    fontFamily: "Menlo",
     fontSize: 24,
     fontWeight: "bold",
     marginTop: 80, // Optionally add more space directly above the title text
-    color: '#fff',
+    color: "#fff",
   },
   subtitle1: {
+    fontFamily: "Menlo",
     fontSize: 24,
     fontWeight: "bold",
     marginTop: 20, // Optionally add more space directly above the title text
-    color: '#fff',
+    color: "#fff",
   },
   subtitle2: {
+    fontFamily: "Menlo",
     fontSize: 24,
     fontWeight: "bold",
     marginTop: -30, // Optionally add more space directly above the title text
-    color: '#fff',
+    color: "#fff",
   },
 });

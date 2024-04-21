@@ -10,15 +10,16 @@ import Backend from "./util.js";
 
 export const globalStyles = StyleSheet.create({
   darkBackground: {
-      backgroundColor: '#121212', // A common dark mode color
+    backgroundColor: "#121212", // A common dark mode color
   },
 });
 
 import HomeScreen from "./components/HomeScreen";
-import Restaurants from "./components/RestaurantsPage";
 import Restauarant from "./components/Restaurant";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
+import Activity from "./components/Activity";
+import Title from "./components/Title";
 
 const Stack = createStackNavigator();
 
@@ -38,27 +39,25 @@ export default function App() {
   };
 
   return (
-    
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName={"Home"}
+        initialRouteName={"Title"} // sets the default route
         screenOptions={{
           headerShown: false,
           animationEnabled: false, // Disables animations for all screens
-          cardStyle: { backgroundColor: '#121212', opacity: 1 }, // Ensures no opacity transition styles are applied
+          cardStyle: { backgroundColor: "#121212", opacity: 1 }, // Ensures no opacity transition styles are applied
         }}
       >
+        <Stack.Screen name="Title" component={Title} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Restaurants" component={Restaurants} />
         <Stack.Screen name="Restaurant" component={Restauarant} />
+        <Stack.Screen name="Activity" component={Activity} />
       </Stack.Navigator>
-     
     </NavigationContainer>
-    
   );
-};
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -66,5 +65,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  
+  centerAlignedContainer: {
+    alignItems: "center",
+  },
 });

@@ -33,8 +33,9 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   title: {
+    fontFamily: "Menlo",
     fontSize: 30,
-    color: '#fff',
+    color: "#fff",
     marginBottom: 30,
   },
   centerAlignedContainer: {
@@ -46,7 +47,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   label: {
-    color: '#fff',
+    color: "#fff",
+    fontFamily: "Menlo",
     fontSize: 16,
     marginBottom: 5,
   },

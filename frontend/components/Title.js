@@ -2,24 +2,24 @@ import React from "react";
 import { View, StyleSheet, Text, Button, TextInput } from "react-native";
 import { Input } from "@rneui/themed";
 
-export default function SignIn({ navigation }) {
-  // Need to implement authentication on Enter
+export default function SignUp({ navigation }) {
   return (
     <View style={{ flex: 1, justifyContent: "center" }}>
       <View style={styles.centerAlignedContainer}>
-        <Text style={styles.title}>Sign In</Text>
+        <Text style={styles.title}>URBAN EXPLORER</Text>
       </View>
       <View style={styles.leftAlignedContainer}>
         <Text style={styles.label}>Email</Text>
         <Input placeholder="Email" style={styles.input} />
         <Text style={styles.label}>Password</Text>
         <Input placeholder="Password" style={styles.input} />
+        
       </View>
-      <View style={styles.buttonContainer}>
-        <Button title="Sign Up" onPress={() => navigation.navigate("SignUp")} />
-        <View style={{ flexGrow: 0.6 }} />
-        <Button title="Enter" />
-      </View>
+      <Button
+        title="Already have an Account? Log In"
+        onPress={() => navigation.navigate("SignIn")}
+        style={styles.button}
+      />
     </View>
   );
 }
@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
     margin: 12,
     padding: 10,
     width: "100%",
-    fontFamily: "Menlo",
   },
   title: {
     fontFamily: "Menlo",
@@ -46,19 +45,13 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     paddingHorizontal: 20,
   },
-  buttonContainer: {
-    flexDirection: "row", // Align buttons horizontally
-    justifyContent: "space-evenly", // This will evenly space your buttons
-    width: "100%",
-  },
   label: {
+    color: "#fff",
     fontFamily: "Menlo",
     fontSize: 16,
     marginBottom: 5,
-    color: "#fff",
   },
   button: {
-    fontFamily: "Menlo",
     marginTop: 20,
   },
 });
