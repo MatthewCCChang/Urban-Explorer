@@ -1,27 +1,33 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import Login from './Login';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import City from './City';
-import Explore from './Explore';
-import CardDetailsScreen from './CardDetailsScreen';
-import Ranking from './Ranking';
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import Login from "./Login";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import City from "./City";
+import Explore from "./Explore";
+import CardDetailsScreen from "./CardDetailsScreen";
+import Ranking from "./Ranking";
 
 const Stack = createNativeStackNavigator();
 
-export default function App () {
+export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+          animationEnabled: false, // Disables animations for all screens
+          cardStyle: { backgroundColor: "#121212", opacity: 1 }, // Ensures no opacity transition styles are applied
+        }}
+      >
         <Stack.Screen name="City" component={City} />
         <Stack.Screen name="Explore" component={Explore} />
         <Stack.Screen name="CardDetails" component={CardDetailsScreen} />
-        <Stack.Screen name="Ranking" component={Ranking} /> 
+        <Stack.Screen name="Ranking" component={Ranking} />
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
+}
 
 // export default function App () {
 //   return (
