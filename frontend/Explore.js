@@ -113,14 +113,14 @@ const ButtonRowWithCards = () => {
     color: "#000000",
   };
 
-  const Card = ({ id, cardTitle }) => {
+  const Card = ({ id, text }) => {
     return (
       <>
-        <TouchableOpacity onPress={() => handleCardPress(cardTitle)}>
+        <TouchableOpacity onPress={() => handleCardPress(text)}>
         {selectedButton === "viewpoints" &&
           <View style={styles.card}>
             <Image
-              source={require("./assets/place.jpg")}
+              source={require("./assets/irvine_sunset.jpg")}
               style={styles.cardImage}
             />
           </View>
@@ -128,7 +128,7 @@ const ButtonRowWithCards = () => {
         {selectedButton === "restaurants" &&
           <View style={styles.card}>
             <Image
-              source={require("./assets/food.jpg")}
+              source={require("./assets/rest_food.jpg")}
               style={styles.cardImage}
             />
           </View>
@@ -136,7 +136,7 @@ const ButtonRowWithCards = () => {
         {selectedButton === "activities" &&
           <View style={styles.card}>
             <Image
-              source={require("./assets/hike.jpg")}
+              source={require("./assets/irvine_hack.jpg")}
               style={styles.cardImage}
             />
           </View>
