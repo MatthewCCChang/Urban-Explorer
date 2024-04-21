@@ -1,18 +1,78 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { useFonts, Montserrat_400Regular } from "@expo-google-fonts/montserrat";
 import Nav from "./Nav";
 import { useNavigation } from "@react-navigation/native";
+import Backend from './utils';
 
 const ButtonRowWithCards = () => {
   const navigation = useNavigation();
   const [selectedButton, setSelectedButton] = useState(null);
-  const [restaruant1, setRestaurant1] = useState("restaurant 1");
-  const [restaurant2, setRestaurant2] = useState("restaraunt 2");
-  const [viewpoint1, setViewpoint1] = useState("viewpoint 1");
-  const [viewpoint2, setViewpoint2] = useState("viewpoint 2");
-  const [activity1, setActivity1] = useState("activity 1");
-  const [activity2, setActivity2] = useState("activity 2");
+  const [restaurant1, setRestaurant1] = useState("Mystery Restaurant 1");
+  const [restaurant2, setRestaurant2] = useState("Mystery Restaurant 2");
+  const [viewpoint1, setViewpoint1] = useState("Mystery Viewpoint 1");
+  const [viewpoint2, setViewpoint2] = useState("Mystery Viewpoint 2");
+  const [activity1, setActivity1] = useState("Mystery Activity 1");
+  const [activity2, setActivity2] = useState("Mystery Activity 2");
+  const [activities, setActivities] = useState([]);
+  const [restaurants, setRestaurants] = useState([]);
+  const [hikes, setHikes] = useState([]);
+
+  
+
+  useEffect(() => {
+    const initializeData = async () => {
+      await fetchData(); // Ensures fetchData completes before moving on
+      // getTwoForAll();    // Executes after fetchData is done
+      handleButtonPress("viewpoints");  // Executes last
+    };
+
+    initializeData();
+  }, []);
+
+
+
+  const fetchData = async () => {
+    try {
+      const his = await Backend.get('/hikes');
+      const acts = await Backend.get('/activities');
+      const rests = await Backend.get('/restaurants');
+      setViewpoint1(his.data[0]);
+      setViewpoint2(his.data[1]);
+      setRestaurant1(rests.data[0]);
+      setRestaurant2(rests.data[1]);
+      setActivity1(acts.data[0]);
+      setActivity2(acts.data[1]);
+      setRestaurants(rests.data);
+    } catch (err) {
+      console.error("Error fetching data:", err);
+    }
+  };
+
+  
+
+
+// const getTwoForAll = () => {
+//   nums = getTwo(restaurants.length);
+//   setRestaurant1(restaurants[nums[0]]);
+//   setRestaurant2(nums[1]);
+//   nums = getTwo(activities.length);
+//   setActivity1(nums[0]);
+//   setActivity2(num[1]);
+//   nums = getTwo(hikes.length);
+//   setViewpoint1(nums[0]);
+//   setViewpoint2(nums[1]);
+// }
+
+// const getTwo = (len) => {
+//   num = getRandomInt(len);
+//   num2 = getRandomInt(len);
+//   return [num, num2];
+// }
+
+// const getRandomInt = (len) => {
+//   return Math.floor(Math.random() * len);
+// }
 
   const handleButtonPress = (buttonName) => {
     setSelectedButton(buttonName);
@@ -57,12 +117,30 @@ const ButtonRowWithCards = () => {
     return (
       <>
         <TouchableOpacity onPress={() => handleCardPress(text)}>
+        {selectedButton === "viewpoints" &&
           <View style={styles.card}>
             <Image
-              source={require("./assets/goat.png")}
+              source={require("./assets/place.jpg")}
               style={styles.cardImage}
             />
           </View>
+        }
+        {selectedButton === "restaurants" &&
+          <View style={styles.card}>
+            <Image
+              source={require("./assets/food.jpg")}
+              style={styles.cardImage}
+            />
+          </View>
+        }
+        {selectedButton === "activities" &&
+          <View style={styles.card}>
+            <Image
+              source={require("./assets/hike.jpg")}
+              style={styles.cardImage}
+            />
+          </View>
+        }
         </TouchableOpacity>
         <View style={styles.centerAlignedContainer}>
           {id === 4 && <Text style={styles.cardText}>{activity1}</Text>}
@@ -114,20 +192,20 @@ const ButtonRowWithCards = () => {
       </View>
       {selectedButton === "viewpoints" && (
         <View style={styles.cardRow}>
-          <Card id={0} text="Card 1" />
-          <Card id={1} text="Card 2" />
+          <Card id={viewpoint1} text={viewpoint1}  />
+          <Card id={viewpoint2} text={viewpoint2} />
         </View>
       )}
       {selectedButton === "restaurants" && (
         <View style={styles.cardRow}>
-          <Card id={2} text="Card 1" />
-          <Card id={3} text="Card 2" />
+          <Card id={restaurant1} text={restaurant1}  />
+          <Card id={restaurant2} text={restaurant2} />
         </View>
       )}
       {selectedButton === "activities" && (
         <View style={styles.cardRow}>
-          <Card id={4} text="Card 1" />
-          <Card id={5} text="Card 2" />
+          <Card id={activity1} text={activity1} />
+          <Card id={activity2} text={activity2} />
         </View>
       )}
       <Nav />
@@ -172,9 +250,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   cardImage: {
-    width: 150,
-    height: 150,
-    marginBottom: 10,
+    width: "100%",
+    height: "100%",
+    marginBottom: 15,
+    marginTop: 15,
+    borderRadius:15,
   },
   centerAlignedContainer: {
     alignItems: "center",

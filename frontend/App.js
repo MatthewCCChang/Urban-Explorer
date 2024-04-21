@@ -7,6 +7,7 @@ import City from "./City";
 import Explore from "./Explore";
 import CardDetailsScreen from "./CardDetailsScreen";
 import Ranking from "./Ranking";
+import Signup from "./Signup"
 
 const Stack = createNativeStackNavigator();
 
@@ -20,10 +21,13 @@ export default function App() {
           cardStyle: { backgroundColor: "#121212", opacity: 1 }, // Ensures no opacity transition styles are applied
         }}
       >
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="City" component={City} />
         <Stack.Screen name="Explore" component={Explore} />
         <Stack.Screen name="CardDetails" component={CardDetailsScreen} />
         <Stack.Screen name="Ranking" component={Ranking} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

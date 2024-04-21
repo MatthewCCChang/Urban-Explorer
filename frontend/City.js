@@ -29,15 +29,15 @@ const City = () => {
       blurRadius={3} // Adjust this value to increase or decrease the blur intensity
     >
       <View style={styles.container}>
-        <Text style={styles.title}>Choose a City to Explore!</Text>
+        <Text style={styles.title}>What's the Move?</Text>
         <TextInput
           style={styles.input}
-          placeholder="Enter city name"
+          placeholder="Enter a city name"
           value={city}
           onChangeText={handleInputChange}
         />
         <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-          <Text style={styles.buttonText}>Submit</Text>
+          <Text style={styles.buttonText}>Enter</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>

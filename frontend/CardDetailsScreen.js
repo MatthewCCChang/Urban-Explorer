@@ -10,8 +10,8 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
-export default function Activity({ route, navigation }) {
-  // const { activityID, isLocal } = route.params;
+export default function CardDetailsScreen({ route, navigation }) {
+  const { cardTitle } = route.params;
   const [imageURL, setImageURL] = useState(
     "https://s3-media1.fl.yelpcdn.com/bphoto/vwGSRka4NtUmHnIUt1OxzA/o.jpg",
   );
@@ -31,8 +31,18 @@ export default function Activity({ route, navigation }) {
     });
   };
 
+  useEffect(() => {
+    if (cardTitle) {
+      setReview(cardTitle.rating);
+      setTitle(cardTitle.name);
+      setLocation(cardTitle.location[0] + ' ' + cardTitle.location[1]);
+      setPhone(cardTitle.phone);
+      setImageURL(cardTitle.image);
+    }
+  }, []);
   return (
-    <View style={{ flex: 1, marginTop: 70 }}>
+    
+    <View style={{ flex: 1, marginTop: 100 }}>
       <View style={styles.backButtonContainer}>
         <TouchableHighlight
           style={styles.backButton}
@@ -43,7 +53,9 @@ export default function Activity({ route, navigation }) {
         </TouchableHighlight>
       </View>
       <View style={styles.centerAlignedContainer}>
+      <View style={styles.centerAlignedContainer}>
         <Text style={styles.title}>{title}</Text>
+        </View>
         <Text style={styles.location}>{location}</Text>
         <Text style={styles.phone}>{phone}</Text>
         <TouchableHighlight
@@ -63,8 +75,7 @@ export default function Activity({ route, navigation }) {
       </View>
       <ScrollView style={styles.scrollView}>
         <Image source={{ uri: imageURL }} style={styles.image} />
-        <Image source={{ uri: imageURL }} style={styles.image} />
-        <Image source={{ uri: imageURL }} style={styles.image} />
+        
       </ScrollView>
     </View>
   );
@@ -87,6 +98,8 @@ const styles = StyleSheet.create({
     fontFamily: "Menlo",
     fontSize: 40,
     marginBottom: 10,
+    marginTop: 70,
+    textAlign:'center',
     fontWeight: "bold",
   },
   menuContainer: {
@@ -108,12 +121,12 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   image: {
-    width: "90%",
-    height: 300,
+    height: 200,  // Increased height for better visibility
+    width: 300,   // Add width to maintain aspect ratio
     borderRadius: 10,
     marginBottom: 10,
     alignSelf: "center",
-  },
+   },
   centerAlignedContainer: {
     alignItems: "center",
     marginBottom: 20,
