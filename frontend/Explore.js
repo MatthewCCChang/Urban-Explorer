@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useFonts, Montserrat_400Regular } from '@expo-google-fonts/montserrat';
 import Nav from './Nav';
+import { useNavigation } from '@react-navigation/native';
 
 
 const ButtonRowWithCards = () => {
+    const navigation = useNavigation();
   const [selectedButton, setSelectedButton] = useState(null);
 
   const handleButtonPress = (buttonName) => {
     setSelectedButton(buttonName);
+  };
+
+  const handleCardPress = (cardTitle) => {
+    navigation.navigate('CardDetails', { cardTitle });
   };
 
   const [fontsLoaded] = useFonts({
@@ -23,7 +29,7 @@ const ButtonRowWithCards = () => {
     // width: 56,
     // height: 24,
     fontSize: 30,
-    marginTop: 70,
+    marginTop: 30,
     fontWeight: "bold",
     fontFamily: 'Montserrat_400Regular',
     // fontStyle: "normal",
@@ -59,11 +65,14 @@ const ButtonRowWithCards = () => {
 
   const Card = ({ text }) => {
     return (
-      <View style={styles.card}>
-        <Text>{text}</Text>
-      </View>
+      <TouchableOpacity onPress={() => handleCardPress(text)}>
+        <View style={styles.card}>
+          <Text>{text}</Text>
+        </View>
+      </TouchableOpacity>
     );
   };
+
 
   return (
     <View style={styles.container}>
@@ -148,7 +157,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
-      margin: 40
+      margin: 20
   }
 });
 
