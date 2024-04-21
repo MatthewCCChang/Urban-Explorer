@@ -10,6 +10,8 @@ import {
 
 const { width } = Dimensions.get("window");
 
+// <Image source={{uri: "https://s3-media1.fl.yelpcdn.com/bphoto/vwGSRka4NtUmHnIUt1OxzA/o.jpg"}} style={styles.image} />
+
 import photo1 from "./images/goat.png";
 import photo2 from "./images/goat.png";
 import photo3 from "./images/goat.png";
@@ -91,6 +93,7 @@ export default class HomeScreen extends Component {
             {renderPhotoViews(activities)}
           </ScrollView>
         </ScrollView>
+        
       </View>
     );
   }

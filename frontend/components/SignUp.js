@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 30,
+    color: '#fff',
     marginBottom: 30,
   },
   centerAlignedContainer: {
@@ -45,6 +46,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   label: {
+    color: '#fff',
     fontSize: 16,
     marginBottom: 5,
   },
