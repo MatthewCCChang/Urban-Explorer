@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 30,
+    color: '#fff',
     marginBottom: 30,
   },
   centerAlignedContainer: {
@@ -51,6 +52,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     marginBottom: 5,
+    color: '#fff',
   },
   button: {
     marginTop: 20,
